@@ -1,5 +1,5 @@
 // fetch data function
-const loadData = async (dataLimit) =>{
+const loadData = async (dataLimit) => {
     const url = 'https://openapi.programming-hero.com/api/ai/tools/'
     const res = await fetch(url);
     const data = await res.json();
@@ -8,19 +8,19 @@ const loadData = async (dataLimit) =>{
 
 
 // show data function
-const showData = (data, dataLimit) =>{
+const showData = (data, dataLimit) => {
     const card = document.getElementById('card');
     const seeMoreBtn = document.getElementById('see-more-btn');
     let dataArray = data.data.tools;
     card.innerHTML = '';
 
-    if(dataLimit && dataArray.length > 6){
+    if (dataLimit && dataArray.length > 6) {
         dataArray = dataArray.slice(0, 6);
         seeMoreBtn.classList.remove('d-none');
-       }
-        else{
-            seeMoreBtn.classList.add('d-none');
-       }
+    }
+    else {
+        seeMoreBtn.classList.add('d-none');
+    }
     dataArray.forEach(singleData => {
         const singleDataDiv = document.createElement('div');
         singleDataDiv.classList.add('col');
@@ -36,10 +36,17 @@ const showData = (data, dataLimit) =>{
                 </ol>
             </div>
                 <hr>
-            <div class="d-flex justify-content-between">
-            <h5 class="mx-3">${singleData.name}</h5>
-                <p></p>
+                <div class="d-flex" style="flex-direction:column; width: 100%;">
+                <h5 class="mx-3">${singleData.name}</h5>
+                <div class="d-flex mx-3 justify-content-between" style="flex-direction:row;">
+                <div class="d-flex style="flex-direction:row;">
+                <i class="bi bi-calendar-week"></i>
+                <p class="mx-2">${singleData.published_in}</p>
+                </div>
+                <div class="">
                 <i class="bi bi-arrow-right text-danger p-3"></i>
+                </div>
+                </div>
             </div>
         </div>
         `
@@ -54,25 +61,25 @@ const showData = (data, dataLimit) =>{
 
 
 // show limited data function
-const processSearch = (dataLimit) =>{
-    toggleSpinner(true); 
+const processSearch = (dataLimit) => {
+    toggleSpinner(true);
     loadData(dataLimit);
 }
 
 processSearch(6);
 
-document.getElementById('see-more-btn').addEventListener('click', function(){
+document.getElementById('see-more-btn').addEventListener('click', function () {
     processSearch()
 });
 
 
 // toggleSpinner function
-function toggleSpinner(isLoading){
+function toggleSpinner(isLoading) {
     const spinnerSection = document.getElementById('loader');
-    if(isLoading){
+    if (isLoading) {
         spinnerSection.classList.remove('d-none')
     }
-    else{
+    else {
         spinnerSection.classList.add('d-none');
     }
 }

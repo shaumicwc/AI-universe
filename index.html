@@ -41,24 +41,34 @@
 
          <!---------------- card section start-------------->
          <section class="container">
+            
             <div id="card" class="row row-cols-1 row-cols-md-3 g-4">
-                <!-- <div class="col">
-                  <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <p></p>
-                        <i class="bi bi-arrow-right text-danger p-3"></i>
-                    </div>
-                  </div>
-                </div> -->
+               <!-- ----------dynamically will add here-------------- -->
             </div>
+
         </section>
         <!------------ card section end -------------------->
+
+        <!-- --------------modal section-------------- -->
+        <section>
+            <div class="modal" id="dataDetails" tabindex="-1" aria-labelledby="dataDetailsLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="dataDetailsName"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex" style="flex-direction: row;">
+                    <div id="Ai-full-details" class="d-flex p-2 mx-2 border border-danger rounded" style="flex-direction: column;"></div>
+                    <div id="Ai-image-details" class="d-flex p-2 mx-2 border border-danger rounded" style="flex-direction: column;"></div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+
+
 
         <!-- --------------See More Btn-------------- -->
 
