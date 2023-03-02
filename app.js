@@ -44,7 +44,7 @@ const showData = (data, dataLimit) => {
                 <p class="mx-2">${singleData.published_in}</p>
                 </div>
                 <div class="">
-                <i class="bi bi-arrow-right text-danger p-3"></i>
+                <i class="bi bi-arrow-right text-danger p-3" onclick="loadDataDetails('${singleData.id}')" data-bs-toggle="modal" data-bs-target="#dataDetails"></i>
                 </div>
                 </div>
             </div>
@@ -86,7 +86,7 @@ function toggleSpinner(isLoading) {
 
 //modal function
 
-const loadDataDetails = async id =>{
+const loadDataDetails = async id => {
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
     const res = await fetch(url);
     const data = await res.json();
@@ -104,34 +104,42 @@ const showDataDetails = data =>{
     aiFullDetails.innerHTML = `
     <p class="fw-bold">${data.data.description}</p>
     <div class="d-flex justify-content-between" style="flex-direction: row;">
-    <div class="text-success">${data.data.pricing[0].price}</div>
-    <div class="text-warning">${data.data.pricing[1].price}</div>
-    <div class="text-danger">${data.data.pricing[2].price}</div>
+    <div class="text-success">${data.data.pricing && data.data.pricing[0].price ? data.data.pricing[0].price: 'no data'}</div>
+    <div class="text-warning">${data.data.pricing && data.data.pricing[1].price ? data.data.pricing[1].price: 'no data'}</div>
+    <div class="text-danger">${data.data.pricing && data.data.pricing[2].price ? data.data.pricing[2].price: 'no data'}</div>
     </div>
     <div class="d-flex justify-content-between" style="flex-direction: row;">
     <div>
     <p class="fw-bold mt-3">Fetaurs:</p>
-    <ol>
+    <ul>
         <li>${a}</li>
         <li>${b}</li>
         <li>${c}</li>
-    </ol>
+    </ul>
     </div>
     <div>
     <p class="fw-bold mt-3">Integrations:</p>
-    <ol>
-        <li>${data.data.integrations[0]}</li>
-        <li>${data.data.integrations[1]}</li>
-        <li>${data.data.integrations[2]}</li>
-    </ol>
+    <ul>
+        <li>${data.data.integrations && data.data.integrations[0] ? data.data.integrations[0]: "No data"}</li>
+        <li>${data.data.integrations && data.data.integrations[1] ? data.data.integrations[1]: "No data"}</li>
+        <li>${data.data.integrations && data.data.integrations[2] ? data.data.integrations[2]: "No data"}</li>
+    </ul>
     </div>
     </div>
     `
     aiImageDetails.innerHTML = `
-    <img src="${data.data.image_link[0]}" style="height:200px;" alt="">
-    <p>${data.data}</p>
+    <div class="image-container">
+        <img src="${data.data.image_link[0]}" style="height:200px;" alt="">
+        ${
+            data.data.accuracy.score ?
+            `<div id="img-overlay" class="overlay">${data.data.accuracy.score * 100}% accuracy</div>` :
+            ''
+          }
+      
+    </div>
+    <p class="text-center py-2 fw-bold">${data.data.input_output_examples && data.data.input_output_examples[0].input ? data.data.input_output_examples[0].input: 'No data'}</p>
+    <p class="text-center px-2">${data.data.input_output_examples && data.data.input_output_examples[0].output ? data.data.input_output_examples[0].output: 'no data'}</p>
 
-    `
-
-    console.log(data.data)
+    `;
+    // console.log(data.data)
 }
