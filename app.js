@@ -26,7 +26,7 @@ const showData = (data, dataLimit) =>{
         singleDataDiv.classList.add('col');
         singleDataDiv.innerHTML = `
         <div class="card">
-            <img src=${singleData.image} class="card-img-top" alt="...">
+            <img src=${singleData.image} class="card-img-top " style="height:200px;" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Features</h5>
                 <ol>
@@ -47,7 +47,7 @@ const showData = (data, dataLimit) =>{
 
         console.log(singleData)
     });
-    
+
     // spinner function called
     toggleSpinner(false);
 }
