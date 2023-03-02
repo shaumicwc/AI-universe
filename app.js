@@ -1,24 +1,26 @@
-const loadData = async () =>{
+// fetch data function
+const loadData = async (dataLimit) =>{
     const url = 'https://openapi.programming-hero.com/api/ai/tools/'
     const res = await fetch(url);
     const data = await res.json();
-    showData(data);
+    showData(data, dataLimit);
 }
-const showData = data =>{
+
+
+// show data function
+const showData = (data, dataLimit) =>{
     const card = document.getElementById('card');
     const seeMoreBtn = document.getElementById('see-more-btn');
     let dataArray = data.data.tools;
+    card.innerHTML = '';
 
-    if(dataArray.length > 6){
+    if(dataLimit && dataArray.length > 6){
         dataArray = dataArray.slice(0, 6);
         seeMoreBtn.classList.remove('d-none');
        }
         else{
             seeMoreBtn.classList.add('d-none');
        }
-
-    
-
     dataArray.forEach(singleData => {
         const singleDataDiv = document.createElement('div');
         singleDataDiv.classList.add('col');
@@ -45,31 +47,32 @@ const showData = data =>{
 
         console.log(singleData)
     });
-    seeMoreBtn.addEventListener('click', function(){
-        
-    });
-    // console.log(data.data.tools);
+    
+    // spinner function called
     toggleSpinner(false);
 }
-const processSearch =(dataLimit) =>{
+
+
+// show limited data function
+const processSearch = (dataLimit) =>{
     toggleSpinner(true); 
-    loadPhones(dataLimit)
+    loadData(dataLimit);
 }
+
 processSearch(6);
+
 document.getElementById('see-more-btn').addEventListener('click', function(){
     processSearch()
-})
+});
 
 
-//spinner function 
-
-// toggleSpinner(true);
-// function toggleSpinner(isLoading){
-//     const spinnerSection = document.getElementById('loader');
-//     if(isLoading){
-//         spinnerSection.classList.remove('d-none')
-//     }
-//     else{
-//         spinnerSection.classList.add('d-none');
-//     }
-// }
+// toggleSpinner function
+function toggleSpinner(isLoading){
+    const spinnerSection = document.getElementById('loader');
+    if(isLoading){
+        spinnerSection.classList.remove('d-none')
+    }
+    else{
+        spinnerSection.classList.add('d-none');
+    }
+}
