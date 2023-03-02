@@ -18,9 +18,12 @@
     background-color: rgba(224, 7, 7, 0.87);
     color: white;
  } 
+ .btn-close{
+    margin-top: 30px;
+ }
 
  /* ---------------------media query ----------------- */
-@media (max-width: 720px) {
+@media (max-width: 576px) {
     .modal-body{
         flex-direction: column;
     }
