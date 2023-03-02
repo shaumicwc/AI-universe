@@ -16,49 +16,49 @@ const showData = data =>{
         else{
             seeMoreBtn.classList.add('d-none');
        }
-       
-   //create element 
 
-//     dataArray.forEach(singleData => {
-//         const singleDataDiv = document.createElement('div');
-//         singleDataDiv.classList.add('col');
-//         singleDataDiv.innerHTML = `
-//         <div class="card">
-//             <img src=${singleData.image} class="card-img-top" alt="...">
-//             <div class="card-body">
-//                 <h5 class="card-title">Features</h5>
-//                 <ol>
-//                     <li>${singleData.features[0]}</li>
-//                     <li>${singleData.features[1]}</li>
-//                     <li>${singleData.features[2]}</li>
-//                 </ol>
-//             </div>
-//                 <hr>
-//             <div class="d-flex justify-content-between">
-//             <h5 class="mx-3">${singleData.name}</h5>
-//                 <p></p>
-//                 <i class="bi bi-arrow-right text-danger p-3"></i>
-//             </div>
-//         </div>
-//         `
-//         card.appendChild(singleDataDiv);
+    
 
-//         console.log(singleData)
-//     });
-//     seeMoreBtn.addEventListener('click', function(){
+    dataArray.forEach(singleData => {
+        const singleDataDiv = document.createElement('div');
+        singleDataDiv.classList.add('col');
+        singleDataDiv.innerHTML = `
+        <div class="card">
+            <img src=${singleData.image} class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Features</h5>
+                <ol>
+                    <li>${singleData.features[0]}</li>
+                    <li>${singleData.features[1]}</li>
+                    <li>${singleData.features[2]}</li>
+                </ol>
+            </div>
+                <hr>
+            <div class="d-flex justify-content-between">
+            <h5 class="mx-3">${singleData.name}</h5>
+                <p></p>
+                <i class="bi bi-arrow-right text-danger p-3"></i>
+            </div>
+        </div>
+        `
+        card.appendChild(singleDataDiv);
+
+        console.log(singleData)
+    });
+    seeMoreBtn.addEventListener('click', function(){
         
-//     });
-//     // console.log(data.data.tools);
-//     toggleSpinner(false);
-// }
-// const processSearch =(dataLimit) =>{
-//     toggleSpinner(true); 
-//     loadPhones(dataLimit)
-// }
-// processSearch(6);
-// document.getElementById('see-more-btn').addEventListener('click', function(){
-//     processSearch()
-// })
+    });
+    // console.log(data.data.tools);
+    toggleSpinner(false);
+}
+const processSearch =(dataLimit) =>{
+    toggleSpinner(true); 
+    loadPhones(dataLimit)
+}
+processSearch(6);
+document.getElementById('see-more-btn').addEventListener('click', function(){
+    processSearch()
+})
 
 
 //spinner function 
