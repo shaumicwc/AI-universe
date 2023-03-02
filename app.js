@@ -83,3 +83,55 @@ function toggleSpinner(isLoading) {
         spinnerSection.classList.add('d-none');
     }
 }
+
+//modal function
+
+const loadDataDetails = async id =>{
+    const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    showDataDetails(data)
+}
+const showDataDetails = data =>{
+    // const dataName = document.getElementById('dataDetailsName');
+    const aiFullDetails = document.getElementById('Ai-full-details');
+    const aiImageDetails = document.getElementById('Ai-image-details')
+    // aiFullDetails.innerText = data.data.name;
+    const {features} = data.data;
+    const a = Object.values(features)[0].feature_name;
+    const b = Object.values(features)[1].feature_name;
+    const c = Object.values(features)[2].feature_name;
+    aiFullDetails.innerHTML = `
+    <p class="fw-bold">${data.data.description}</p>
+    <div class="d-flex justify-content-between" style="flex-direction: row;">
+    <div class="text-success">${data.data.pricing[0].price}</div>
+    <div class="text-warning">${data.data.pricing[1].price}</div>
+    <div class="text-danger">${data.data.pricing[2].price}</div>
+    </div>
+    <div class="d-flex justify-content-between" style="flex-direction: row;">
+    <div>
+    <p class="fw-bold mt-3">Fetaurs:</p>
+    <ol>
+        <li>${a}</li>
+        <li>${b}</li>
+        <li>${c}</li>
+    </ol>
+    </div>
+    <div>
+    <p class="fw-bold mt-3">Integrations:</p>
+    <ol>
+        <li>${data.data.integrations[0]}</li>
+        <li>${data.data.integrations[1]}</li>
+        <li>${data.data.integrations[2]}</li>
+    </ol>
+    </div>
+    </div>
+    `
+    aiImageDetails.innerHTML = `
+    <img src="${data.data.image_link[0]}" style="height:200px;" alt="">
+    <p>${data.data}</p>
+
+    `
+
+    console.log(data.data)
+}
