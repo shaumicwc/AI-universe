@@ -54,7 +54,6 @@ const showData = () =>{
     // spinner function called
     toggleSpinner(false);
 }
-
 toggleSpinner(true);
 
 const sortByDate = document.getElementById('sort-btn');
@@ -101,14 +100,24 @@ const showDataDetails = data =>{
     const c = Object.values(features)[2].feature_name;
     aiFullDetails.innerHTML = `
     <p class="fw-bold">${data.data.description}</p>
-    <div class="d-flex justify-content-between" style="flex-direction: row;">
-    <div class="text-success">${data.data.pricing && data.data.pricing[0].price ? data.data.pricing[0].price: 'no data'}</div>
-    <div class="text-warning">${data.data.pricing && data.data.pricing[1].price ? data.data.pricing[1].price: 'no data'}</div>
+    <div class=" " style="flex-direction: row;">
+    <div class="d-flex gap-3">
+    <div>
+    <div class="text-success">${data.data.pricing && data.data.pricing[0].plan ? data.data.pricing[0].plan: 'No Data Found'}</div>
+    <div class="text-success">${data.data.pricing && data.data.pricing[0].price ? data.data.pricing[0].price: 'No Data Found'}</div>
+    </div>
+    <div>
+    <div class="text-warning">${data.data.pricing && data.data.pricing[1].plan ? data.data.pricing[1].plan: ''}</div>
+    <div class="text-danger">${data.data.pricing && data.data.pricing[1].price ? data.data.pricing[1].price: 'no data'}</div>
+    </div>
+    <div>
+    <div class="text-warning">${data.data.pricing && data.data.pricing[2].plan ? data.data.pricing[2].plan: 'no data'}</div>
     <div class="text-danger">${data.data.pricing && data.data.pricing[2].price ? data.data.pricing[2].price: 'no data'}</div>
+    </div>
     </div>
     <div class="d-flex justify-content-between" style="flex-direction: row;">
     <div>
-    <p class="fw-bold mt-3">Fetaurs:</p>
+    <p class="fw-bold mt-3">Features:</p>
     <ul>
         <li>${a}</li>
         <li>${b}</li>
@@ -118,10 +127,11 @@ const showDataDetails = data =>{
     <div>
     <p class="fw-bold mt-3">Integrations:</p>
     <ul>
-        <li>${data.data.integrations && data.data.integrations[0] ? data.data.integrations[0]: "No data Found"}</li>
-        <li>${data.data.integrations && data.data.integrations[1] ? data.data.integrations[1]: "No data Found"}</li>
-        <li>${data.data.integrations && data.data.integrations[2] ? data.data.integrations[2]: "No data Found"}</li>
+        <li>${data.data.integrations && data.data.integrations[0] ? data.data.integrations[0]: "No Data Found"}</li>
+        <li>${data.data.integrations && data.data.integrations[1] ? data.data.integrations[1]: "No Data Found"}</li>
+        <li>${data.data.integrations && data.data.integrations[2] ? data.data.integrations[2]: "No Data Found"}</li>
     </ul>
+    </div>
     </div>
     </div>
     `
@@ -135,9 +145,8 @@ const showDataDetails = data =>{
           }
       
     </div>
-    <p class="text-center py-2 fw-bold">${data.data.input_output_examples && data.data.input_output_examples[0].input ? data.data.input_output_examples[0].input: 'No data'}</p>
-    <p class="text-center px-2">${data.data.input_output_examples && data.data.input_output_examples[0].output ? data.data.input_output_examples[0].output: 'no data'}</p>
+    <p class="text-center py-2 fw-bold">${data.data.input_output_examples && data.data.input_output_examples[0].input ? data.data.input_output_examples[0].input: 'Can you give any example?'}</p>
+    <p class="text-center px-2">${data.data.input_output_examples && data.data.input_output_examples[0].output ? data.data.input_output_examples[0].output: 'No! Not Yet! Take a break!!!'}</p>
 
     `;
-    // console.log(data.data)
 }
