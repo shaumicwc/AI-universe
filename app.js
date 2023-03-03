@@ -101,17 +101,17 @@ const showDataDetails = data =>{
     aiFullDetails.innerHTML = `
     <p class="fw-bold">${data.data.description}</p>
     <div class=" " style="flex-direction: row;">
-    <div class="d-flex gap-3">
+    <div class="d-flex justify-content-between">
     <div>
-    <div class="text-success">${data.data.pricing && data.data.pricing[0].plan ? data.data.pricing[0].plan: 'No Data Found'}</div>
+    <div class="text-success">${data.data.pricing && data.data.pricing[0].plan ? data.data.pricing[0].plan: ''}</div>
     <div class="text-success">${data.data.pricing && data.data.pricing[0].price ? data.data.pricing[0].price: 'No Data Found'}</div>
     </div>
     <div>
-    <div class="text-warning">${data.data.pricing && data.data.pricing[1].plan ? data.data.pricing[1].plan: 'No Data Found'}</div>
+    <div class="text-warning">${data.data.pricing && data.data.pricing[1].plan ? data.data.pricing[1].plan: ''}</div>
     <div class="text-danger">${data.data.pricing && data.data.pricing[1].price ? data.data.pricing[1].price: 'No Data Found'}</div>
     </div>
     <div>
-    <div class="text-warning">${data.data.pricing && data.data.pricing[2].plan ? data.data.pricing[2].plan: 'No Data Found'}</div>
+    <div class="text-warning">${data.data.pricing && data.data.pricing[2].plan ? data.data.pricing[2].plan: ''}</div>
     <div class="text-danger">${data.data.pricing && data.data.pricing[2].price ? data.data.pricing[2].price: 'No Data Found'}</div>
     </div>
     </div>
