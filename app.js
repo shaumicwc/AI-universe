@@ -7,6 +7,7 @@ const loadData = async () =>{
     dataArray = data.data.tools;
     showData();
 }
+console.log(dataArray);
 
 // show data function
 const showData = () =>{
